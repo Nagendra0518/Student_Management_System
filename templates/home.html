@@ -2,10 +2,53 @@
 
 {% block content %}
 
-{% if sales %}
-<h1>welcome to sales page: {{ user }}</h1>
-{% else %}
-<h1>welcome to admin page</h1>
+<style>
+    .admin-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+    .admin-details {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    .admin-details ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .admin-details li {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
+{% if request.path == '/' %}  
+<div class="admin-container">
+    <h1>Welcome, {{ admin.name }}</h1>
+    <div class="admin-details">
+        <h2>Admin Details:</h2>
+        <ul>
+            <li><strong>Name:</strong> {{ admin.name }}</li>
+            <li><strong>Email:</strong> {{ admin.email }}</li>
+            <li><strong>Role:</strong> {{ admin.role }}</li>
+            <li><strong>Joined On:</strong> {{ admin.join_date }}</li>
+            <li><strong>Last Login:</strong> {{ admin.last_login }}</li>
+            <li><strong>Department:</strong> {{ admin.department }}</li>
+            <li><strong>Contact:</strong> {{ admin.contact }}</li>
+        </ul>
+    </div>
+</div>
 {% endif %}
 
 {% endblock %}

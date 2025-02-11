@@ -90,10 +90,10 @@
                 <table>
                      {% if salesperson %}
                     <tr>
-                        <td>sales person</td>
+                        <td>Lecturer Name</td>
                         <td>
                             <select name="sales_person" required>
-                                <option>--Select Sales Person--</option>
+                                <option>--Select Lecturer Name--</option>
                                 {% for user in users %}
                                 <option value="{{user.id}}"> {{user.username}}</option>
                                 {% endfor %}
@@ -106,7 +106,7 @@
                         <td><input type="date" name="date" required></td>
                     </tr>
                     <tr>
-                        <td>Name</td>
+                        <td> Student Name</td>
                         <td><input type="text" name="name" value="{{ student.name }}" required></td>
                     </tr>
                     <tr>
