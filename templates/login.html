@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: backgroundAnimation 10s infinite ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Background Animation */
+@keyframes backgroundAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* Container Styling */
+.login-container {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(255, 0, 255, 0.5);
+  text-align: center;
+  position: relative;
+  animation: containerPulse 3s infinite ease-in-out;
+}
+
+/* Container Glow Effect */
+@keyframes containerPulse {
+  0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.4);
+  }
+  50% {
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.8), 0 0 80px rgba(255, 0, 255, 0.8);
+  }
+}
+
+/* Form Heading */
+.login-form h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: textGlow 2s infinite ease-in-out;
+}
+
+/* Text Glow Animation */
+@keyframes textGlow {
+  0%, 100% {
+      text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff33cc, 0 0 30px #ff66ff;
+  }
+  50% {
+      text-shadow: 0 0 20px #3333ff, 0 0 30px #3366ff, 0 0 40px #3399ff;
+  }
+}
+
+/* Form Fields */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.form-group input:focus {
+  border-color: #00ffff;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
+}
+
+/* Button Styling */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: linear-gradient(90deg, #ff33cc, #ff9933, #ff0066);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 153, 51, 0.6);
+  animation: buttonHover 3s infinite ease-in-out;
+}
+
+@keyframes buttonHover {
+  0%, 100% {
+      box-shadow: 0 0 20px #ff33cc, 0 0 40px #ff9933;
+  }
+  50% {
+      box-shadow: 0 0 40px #ff9933, 0 0 60px #ff33cc;
+  }
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 30px #ff66ff, 0 0 60px #ff0066;
+}
+
+/* Registration Link */
+.register-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.register-link a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #ff33cc;
+  text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff66ff;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+      padding: 20px;
+  }
+
+  .login-form h1 {
+      font-size: 24px;
+  }
+
+  button {
+      font-size: 14px;
+  }
+}
+</style>
+</head>
+<body>
+    <div class="login-container">
+        <form class="login-form" method="post">
+                {% csrf_token %}
+            <h1>Login</h1>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p class="register-link">Don't have an account? <a href="/signup/">Sign up</a></p>
+        </form>
+    </div>
+</body>
+</html>

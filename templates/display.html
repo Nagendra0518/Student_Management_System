@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+button {
+    padding: 8px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #007bff; /* Default button color */
+    color: white; /* Ensures text color is visible */
+}
+
+button a {
+    color: white; /* Ensures the link inside is styled like the button text */
+    text-decoration: none; /* Removes underline */
+    display: inline-block; /* Ensures proper alignment inside the button */
+}
+
+button:hover {
+    opacity: 0.8; /* Adds a hover effect */
+}
+
+button.btn-danger {
+    background-color: red; /* Red color for danger button */
+}
+
+button.btn-danger:hover {
+    opacity: 0.8; /* Hover effect for danger button */
+}
+
+button a:hover {
+    text-decoration: none; /* Ensures no underline on hover */
+}
+{% endblock%}
+{% block content %}
+<h1>welcome to display page</h1>
+<table class="table table-dark">
+  <thead>
+    <tr>
+        {% if salesperson %}
+      <th scope="col">Sales Person Names</th>
+        {% endif %}
+      <th scope="col">Date of Joining</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Education</th>
+      <th scope="col">Skills</th>
+        {% if update %}
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+        {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for student in students %}
+    <tr>
+        {% if salesperson %}
+      <td>{{ student.sales_person }}</td>
+        {% endif %}
+      <td>{{ student.joiningdate }}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.mobile }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.education }}</td>
+      <td>{{ student.skills }}</td>
+        {% if update %}
+      <td>
+        <button type="button">
+          <a href="{% url 'update' student.id %}" style="text-decoration=none">UPDATE</a>
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger">
+          <a href="{% url 'delete' student.id %}" style="text-decoration=none">DELETE</a>
+        </button>
+      </td>
+        {% endif %}
+    </tr>
+  {% empty %}
+  <tr>
+    <td>No Students Data Available</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

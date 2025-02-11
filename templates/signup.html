@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Signup Page</title>
+    <style>
+     /* Global Reset and Box-Sizing */
+/* Global Reset and Box-Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, #ffcc00, #000000, #ffcc00); /* Yellow and black gradient */
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Gradient Animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Signup Container */
+.signup-container {
+  background: rgba(0, 0, 0, 0.9); /* Dark background for contrast */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(255, 165, 0, 0.6); /* Orange box-shadow */
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: slideIn 1s ease-out forwards, fadeIn 1s ease-out forwards;
+}
+
+/* Slide-In and Fade-In Animation */
+@keyframes slideIn {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Header Styling */
+h2 {
+  color: #fff; /* White color for text */
+  font-size: 28px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ffcc00, #ff9900); /* Yellow gradient */
+  background-clip: text;
+  color: transparent;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+/* Text Glow Animation */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 204, 0, 1), 0 0 30px rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Label Styling */
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #eaeaea; /* Light grey color for better visibility */
+  margin-bottom: 0.5rem;
+}
+
+/* Input Styling */
+input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #444;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1); /* Darker input background */
+  color: #fff; /* White text for visibility */
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); /* Yellow box-shadow */
+}
+
+input:focus {
+  border-color: #ffcc00; /* Yellow border on focus */
+  background: rgba(255, 255, 255, 0.2); /* Slightly brighter background */
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.8); /* Yellow focus box-shadow */
+  outline: none;
+}
+
+/* Button Styling */
+.btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #ffcc00, #ff9900); /* Yellow gradient */
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.6); /* Orange box-shadow */
+}
+
+.btn:hover {
+  background: linear-gradient(45deg, #ffb300, #ffcc00); /* Darker yellow on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 165, 0, 0.8); /* Brighter orange box-shadow */
+}
+
+/* Sign In Text */
+.signin-text {
+  margin-top: 1rem;
+  font-size: 14px;
+  color: #eaeaea; /* Light grey for text */
+}
+
+.signin-text a {
+  color: #ffcc00; /* Yellow link */
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.signin-text a:hover {
+  text-decoration: underline;
+  color: #ff9900; /* Darker yellow on hover */
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Sign Up</h2>
+    <form action="#" method="POST">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Name</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn">Sign Up</button>
+          {% if msg %}
+          <h3 style="color:red">Name or Email Already Exists</h3>
+          {% endif %}
+      <p class="signin-text">Already have an account? <a href="/">Sign In</a></p>
+    </form>
+  </div>
+</body>
+</html>
